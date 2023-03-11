@@ -29,7 +29,7 @@ const BattleOfMonsters = () => {
             <MonstersList monsters={monsters} />
 
             <BattleSection>
-                <MonsterBattleCard title={selectedMonster?.name || "Player"}></MonsterBattleCard>
+                <MonsterBattleCard monster={selectedMonster} title={"Player"}></MonsterBattleCard>
                 <StartBattleButton data-testid="start-battle-button"  disabled={selectedMonster === null} onClick={handleStartBattleClick}>Start Battle</StartBattleButton>
                 <MonsterBattleCard title="Computer"></MonsterBattleCard>
             </BattleSection>
