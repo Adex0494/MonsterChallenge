@@ -1,15 +1,17 @@
 import { createReducer } from '@reduxjs/toolkit';
 import { Monster } from '../../models/interfaces/monster.interface';
-import { fetchMonstersData, setSelectedMonster } from './monsters.actions';
+import { fetchMonstersData, setSelectedMonster, setSelectedCpuMonster, postBattle } from './monsters.actions';
 
 interface MonsterState {
   monsters: Monster[];
   selectedMonster: Monster | null;
+  selectedCpuMonster: Monster | null;
 }
 
 const initialState: MonsterState = {
   monsters: [],
   selectedMonster: null,
+  selectedCpuMonster: null
 };
 
 export const monstersReducer = createReducer(initialState, (builder) => {
@@ -28,8 +30,14 @@ export const monstersReducer = createReducer(initialState, (builder) => {
     monsters: action.payload,
   }));
 
+
   builder.addCase(setSelectedMonster, (state, action) => ({
     ...state,
     selectedMonster: action.payload,
+  }));
+
+  builder.addCase(setSelectedCpuMonster, (state, action) => ({
+    ...state,
+    selectedCpuMonster: action.payload,
   }));
 });
