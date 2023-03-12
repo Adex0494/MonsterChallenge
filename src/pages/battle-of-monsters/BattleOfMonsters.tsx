@@ -8,6 +8,7 @@ import { fetchMonstersData } from "../../reducers/monsters/monsters.actions"
 import { selectMonsters, selectSelectedMonster, selectSelectedCpuMonster } from "../../reducers/monsters/monsters.selectors"
 import { BattleSection, PageContainer, StartBattleButton, WinnerContainer, WinnerText } from "./BattleOfMonsters.styled"
 import { API_URL } from '../../constants/env';
+import { Monster } from '../../models/interfaces/monster.interface';
 
 const BattleOfMonsters = () => {
     const [winnerText, setWinnerText]=useState<string>('')
@@ -21,7 +22,7 @@ const BattleOfMonsters = () => {
         dispatch(fetchMonstersData())
     }, []);
 
-    const handleStartBattleClick = async () => {
+    const handleStartBattleClick = async (): Promise<void> => {
         // Fight!
         await fetch(`${API_URL}/battle`, {
             method: 'POST',
@@ -36,7 +37,7 @@ const BattleOfMonsters = () => {
 
             <MonstersList monsters={monsters} selectedCpuMonster={selectedCpuMonster} cleanWinnerText={()=> setWinnerText('')}/>
 
-            {winnerText && <WinnerContainer> <WinnerText> {winnerText} </WinnerText> </WinnerContainer>}
+            {winnerText && <WinnerContainer data-testid="winner-section"> <WinnerText> {winnerText} </WinnerText> </WinnerContainer>}
 
             <BattleSection>
                 <MonsterBattleCard monster={selectedMonster} title={"Player"}></MonsterBattleCard>

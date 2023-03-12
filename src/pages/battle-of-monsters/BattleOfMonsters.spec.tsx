@@ -8,6 +8,7 @@ import { store } from '../../app/store'
 
 const battleOfMonstersFactory = async () => {
     mockFetch.mockResponse(req => {
+        console.log(req.url)
         if (req.url.includes('monsters')) {
             return Promise.resolve(JSON.stringify(monstersData.monsters))
         }
@@ -22,13 +23,14 @@ const battleOfMonstersFactory = async () => {
     await waitFor(() => expect(screen.getByTestId('monsters-list-section').childNodes).toHaveLength(monstersData.monsters.length))
 }
 
+
 describe('BattleOfMonsters', () => {
     beforeEach(() => {
         mockFetch.enableMocks()
         mockFetch.resetMocks()
     })
 
-    it('should render the page container', async () => { 
+    it('should render the page container', async () => {
         await battleOfMonstersFactory()
         expect(screen.getByText(/Battle of Monsters/i)).toBeInTheDocument()
         expect(screen.getByTestId('start-battle-button')).toBeInTheDocument()
@@ -49,5 +51,6 @@ describe('BattleOfMonsters', () => {
         expect(screen.getByTestId('monster-1')).toBeInTheDocument()
         await act(() => screen.getByTestId('monster-1').click())
         await act(() => screen.getByTestId('start-battle-button').click())
+        // expect(screen.getByTestId('winner-section')).toBeInTheDocument()
     })
 })
