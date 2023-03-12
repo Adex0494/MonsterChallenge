@@ -11,8 +11,8 @@ const MonsterBattleCard: React.FC<MonsterCardProps> = ({ monster, title }) => {
             {!monster && <BattleMonsterTitle>{title}</BattleMonsterTitle>}
             {monster &&
                 <div>
-                    <Image src={monster.imageUrl}/>
-                    <BattleMonsterTitleSmall> {monster.name} </BattleMonsterTitleSmall>
+                    <Image data-testid={monster.name} src={monster.imageUrl}/>
+                    <BattleMonsterTitleSmall data-testid={title}> {monster.name} </BattleMonsterTitleSmall>
                     <SkillTitle>{'HP'}</SkillTitle>
                     <ProgressBar variant='determinate' value = {monster.hp}/>
                     <SkillTitle>{'Attack'}</SkillTitle>

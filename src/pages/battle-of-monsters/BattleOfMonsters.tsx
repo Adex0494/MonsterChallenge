@@ -40,9 +40,9 @@ const BattleOfMonsters = () => {
             {winnerText && <WinnerContainer data-testid="winner-section"> <WinnerText> {winnerText} </WinnerText> </WinnerContainer>}
 
             <BattleSection>
-                <MonsterBattleCard monster={selectedMonster} title={"Player"}></MonsterBattleCard>
+                <MonsterBattleCard data-testid="player-monster" monster={selectedMonster} title={"Player"}></MonsterBattleCard>
                 <StartBattleButton data-testid="start-battle-button"  disabled={selectedMonster === null} onClick={handleStartBattleClick}>Start Battle</StartBattleButton>
-                <MonsterBattleCard monster={selectedCpuMonster} title="Computer"></MonsterBattleCard>
+                <MonsterBattleCard data-testid="cpu-monster" monster={selectedCpuMonster} title="Computer"></MonsterBattleCard>
             </BattleSection>
         </PageContainer>
     )
