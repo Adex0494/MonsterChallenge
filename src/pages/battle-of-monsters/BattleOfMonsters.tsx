@@ -8,7 +8,6 @@ import { fetchMonstersData } from "../../reducers/monsters/monsters.actions"
 import { selectMonsters, selectSelectedMonster, selectSelectedCpuMonster } from "../../reducers/monsters/monsters.selectors"
 import { BattleSection, PageContainer, StartBattleButton, WinnerContainer, WinnerText } from "./BattleOfMonsters.styled"
 import { API_URL } from '../../constants/env';
-import { Monster } from '../../models/interfaces/monster.interface';
 
 const BattleOfMonsters = () => {
     const [winnerText, setWinnerText]=useState<string>('')
